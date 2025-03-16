@@ -52,27 +52,23 @@ double IDW::IDW_top_func(double usr_grid_x, double usr_grid_y, double pow, doubl
 double IDW::run_IDW_for_one_block(double target_x, double target_y, double Pow, double** input_array, int num_DH)
 {
 	double x, y, t_val, s_val;
-	bool valid;
+	bool valid = 0;
 
-	for (int i = 0; i < num_DH; i++) // test all the drill holes to make sure that the grid target square being searched is not already a sample sqaure
+	for (int i = 0; i < num_DH; i++) // test all the drill holes to make sure that the grid target square being searched is not already a sample sqaure.
 	{
 		x = input_array[i][0];
 		y = input_array[i][1];
 		t_val = input_array[i][2];
 
-		valid = 0;
-		//cout << "Searching DH:" << i << " \n x: " << x << "\n y: " << y << "\n value: " << t_val << endl;
 		if ((fabs(target_x - x) > deci) || (fabs(target_y - y) > deci))
 		{
-			/*if the target square x and y are both different then valid = 1 allows the idw to run if they are both the same then we already have data so dont need to run the idw test*/
+			/*if the target square x and y are both different then valid = 1 allowing the IDW to run. If they are both the same then there is already data in that square so dont need to run the IDW*/
 			valid = 1;
 		}
-		else
+		else // if that IDW cannot run then break this loop
 		{
-			//cout << "Error can not run IDW for this sqaure. Assiging value already at square."<< endl;
-			valid = 0;
+			valid = 0; // sets valid back to 0 so IDW cannot run
 			break;
-
 		}
 
 	}
@@ -81,7 +77,6 @@ double IDW::run_IDW_for_one_block(double target_x, double target_y, double Pow, 
 
 	for (int i = 0; i < num_DH; i++) // loops througuh all the drill holes for one target grid square
 	{
-
 
 		if (valid == 1) // works out distance when there is a valid grade value and when it is not the same square
 		{
@@ -105,11 +100,11 @@ double IDW::run_IDW_for_one_block(double target_x, double target_y, double Pow, 
 	}
 
 
-	if (valid == 1)
+	if (valid == 1) // if the target square is not the same as the drill hole square then run the IDW formula
 	{
 		s_val = (top / bottom);
 	}
-	else
+	else // if the target square is the same as the drill hole square then just use the drill hole value already their
 	{
 
 		s_val = t_val;

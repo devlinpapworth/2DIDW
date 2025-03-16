@@ -63,7 +63,7 @@ int main(void)
 		cout << "Oops, looks like that entry didnt work. Try again: ";
 	} while (true);
 
-	int num_DH = stod(temp);
+	int num_DH = stoi(temp);
 
 	double** input_array = data.Create_DH_array(num_DH, grid_x, grid_y);
 
