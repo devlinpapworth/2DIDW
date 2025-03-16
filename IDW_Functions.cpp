@@ -1,25 +1,55 @@
-#include<iostream>
-#include<cmath>
-#include<string>
-#include<fstream>
-
-
-
-#include <iomanip> // fro 2 decimal places
-#pragma
 
 #include "IDW_Functions.h"
-using namespace std;
+
 fstream myFile;
 
 
+double IDW::IDW_top_func(double usr_grid_x, double usr_grid_y, double pow, double** input_array, int num_DH)
+{
+	double count = 0;
+	ofstream outFile("IDW_output.csv"); // Open file for writing
 
-const double deci = 1e-6;
-double top, bottom;
+	if (!outFile) 
+	{
+		cerr << "Error: Could not open output file!" << endl;
+	}
+
+	for (int j = 1; j <= usr_grid_y; j++) // loops through the grid y co-ords
+	{
+
+		for (int i = 1; i <= usr_grid_x; i++) // loops through the grid x co-ords
+		{
+			top = 0; //reseting the IDW formula values
+			bottom = 0;
+
+			count = prog_perc(usr_grid_x, usr_grid_y, num_DH, count);
+
+			double val = run_IDW_for_one_block(i, j, pow, input_array, num_DH);
+
+			outFile << fixed << setprecision(2) << val; // writes the value to the output file with two decimal places
+			if (i < usr_grid_x)
+			{
+				outFile << ","; // if not at the end of the row then add a comma
+			}
+		}
+
+		outFile << "\n"; // if at the end of the row then add a new line
+	}
+
+
+	for (int i = 0; i < num_DH; i++)
+	{
+		delete[] input_array[i];
+	}
+	delete[] input_array;
+
+	return(0);
+}
 
 
 
-double run_IDW_for_one_block(double target_x, double target_y, double Pow, double** input_array, int num_DH)
+
+double IDW::run_IDW_for_one_block(double target_x, double target_y, double Pow, double** input_array, int num_DH)
 {
 	double x, y, t_val, s_val;
 	bool valid;
@@ -91,61 +121,15 @@ double run_IDW_for_one_block(double target_x, double target_y, double Pow, doubl
 }
 
 
-double prog_perc(double x, double y, double num, double i)
+double IDW::prog_perc(double x, double y, double num, double i)
 {
-	//system("CLS");  // Clears screen
-
+	
 	double progress = (i / (x * y)) * 100;
-	//cout << "count is: " << i << endl;
-	//cout << x * y << "this is max grid size." << endl;
 
 	cout << "\rProgress: " << trunc(progress + 0.5) << "%" << flush;
-
+	// re-rights over the line updating with the current percentage complete
 
 
 	return(i + 1);
 }
 
-
-double IDW_top_func(double usr_grid_x, double usr_grid_y, double pow, double** input_array, int num_DH)
-{
-	double count = 0;
-	ofstream outFile("IDW_output.csv"); // Open file for writing
-	if (!outFile) {
-		cerr << "Error: Could not open output file!" << endl;
-	}
-	for (int j = 1; j <= usr_grid_y; j++)
-	{
-
-		for (int i = 1; i <= usr_grid_x; i++)
-		{
-			top = 0; //reseting the IDW formula values
-			bottom = 0;
-
-			/*cout << "\n.............................................\n";
-			cout << "Interpolating for sqaure " << i << " by " << j << endl;
-			cout << "\n.............................................\n";*/
-
-
-			count = prog_perc(usr_grid_x, usr_grid_y, num_DH, count);
-
-			double val = run_IDW_for_one_block(i, j, pow, input_array, num_DH);
-
-			// cout << fixed << setprecision(2) << val << "  "; 
-			outFile << fixed << setprecision(2) << val;
-			if (i < usr_grid_x) outFile << ",";
-
-		}
-
-		outFile << "\n";
-	}
-
-
-	for (int i = 0; i < num_DH; i++)
-	{
-		delete[] input_array[i];
-	}
-	delete[] input_array;
-
-	return(0);
-}

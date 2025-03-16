@@ -18,7 +18,11 @@ int main(void)
 {
 	ask_usr user;
 	data_handle data;
-	Error_check check;// calling the classes in the main function
+	Error_check check;
+	IDW func;// calling the classes in the main function
+	
+	
+	
 	cout << "Welcome to the Inverse Distance Weighting (IDW) program." << endl;
 
 	double power = user.get_power();
@@ -75,7 +79,7 @@ int main(void)
 	cout << "\nEverything seems in order lets begin." << endl; 
 	
 	cout << "\n.............................................\n";
-	IDW_top_func(grid_x, grid_y, power, input_array, num_DH); 
+	func.IDW_top_func(grid_x, grid_y, power, input_array, num_DH); 
 	cout << "\n.............................................\n";
 	
 	char Y_N;
