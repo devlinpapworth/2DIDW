@@ -144,6 +144,7 @@ double** Error_check::grid_greater_than_DH(int& max_x, int& max_y, double** DH, 
 			cout << "x: " << DH[i][0] << "\ny: " << DH[i][1] << endl;
 			
 
+		
 			do
 			{
 				cout << "Do you want to:\n a) Adjust the Drll Hole co-ordinates. \n b) Change grid co-ordinates. \n c) Ignore. " << endl;

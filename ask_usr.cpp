@@ -77,6 +77,17 @@ double ask_usr::get_power()
 }
 
 
+double
+string temp;
+do {
+	cout << "How many Drill holes do you want to enter? " << endl;
+	cin >> temp;
+	if (valid_int(temp) && stod(temp) > 0)
+	{
+		break;
 
+	}
+	cout << "Oops, looks like that entry didnt work. Try again: ";
+} while (true);
 
 

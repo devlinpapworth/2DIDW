@@ -12,6 +12,7 @@ class ask_usr
 public:
 	int grid_size(int& grid_x, int& grid_y);
 	double get_power();
+	double get_num_DH();
 };
 
 
