@@ -4,7 +4,7 @@ bool valid_double(string str)
 {
 	int count = 0;
 
-	for (int i = 0; i < str.length(); i++)
+	for (int i = 0; i < str.length(); i++) // loops through each char of string
 	{
 		if (!isdigit(str[i])) // if i is not a digit
 		{
@@ -33,7 +33,7 @@ bool valid_int(string str)
 {
 	int count = 0;
 
-	for (int i = 0; i < str.length(); i++)
+	for (int i = 0; i < str.length(); i++) // loops through each char of string
 	{
 		if (!isdigit(str[i])) // if i is not a digit
 		{

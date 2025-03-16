@@ -8,6 +8,7 @@ using namespace std;
 
 class Error_check
 {
+	const double deci = 1e-6; // small value to compare the difference between two double values
 public:
 	double** valid_DH_values(double** DH, int num);
 	double** repeat_DH_xy(double** DH, int& num);

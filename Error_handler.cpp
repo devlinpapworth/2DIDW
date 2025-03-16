@@ -2,7 +2,7 @@
 #include "Error_handler.h"
 
 
-const double deci = 1e-6; // small value to compare the difference between two double values
+
 
 double** Error_check::valid_DH_values(double** DH, int num)
 {
@@ -21,7 +21,7 @@ double** Error_check::valid_DH_values(double** DH, int num)
 			string temp;
 			do
 			{
-				cout << "Enter the new value: " << endl;
+				cout << "Enter the correct value: " << endl;
 				cin >> temp;
 				if (valid_double(temp) && (stod(temp) <= 1.0) && (stod(temp) >= 0.0))
 				{
@@ -32,7 +32,7 @@ double** Error_check::valid_DH_values(double** DH, int num)
 			} while (true);
 
 
-			DH[i][2] = stod(temp); // converts the string to a double and assigns it to the DH array
+			DH[i][2] = stod(temp); // converts the string to a double and assigns it into the DH array
 
 		}
 	}
@@ -45,18 +45,12 @@ double** Error_check::valid_DH_values(double** DH, int num)
 
 
 
-
-
-
-
-
 double** Error_check::repeat_DH_xy(double** DH, int& num)
 {
 
 	/* adds the frist drill hole from DH array to the new DH array then loops trhough
 	the next drill hole from the old DH array
 	seeing if it is in the new DH array if it is then you can delete it */
-
 
 
 
@@ -134,22 +128,13 @@ double** Error_check::repeat_DH_xy(double** DH, int& num)
 
 
 
-
-
-
-
-
-
-
-
-
 double** Error_check::grid_greater_than_DH(int& max_x, int& max_y, double** DH, int num)
 {
 	cout << "Checking that your block model dimensions include all the Drill Holes........" << endl;
 
 	for (int i = 0; i < num; i++)
 	{
-		if ((max_x < DH[i][0]) || (max_y < DH[i][1]))
+		if ((max_x < DH[i][0]) || (max_y < DH[i][1])) // if the drill hole x or y is outside the grid size
 		{
 			char temp;
 			cout << "Error! Drill Hole " << i + 1 << " is outside the block model domain.";
@@ -159,7 +144,6 @@ double** Error_check::grid_greater_than_DH(int& max_x, int& max_y, double** DH, 
 			cout << "x: " << DH[i][0] << "\ny: " << DH[i][1] << endl;
 			
 
-			
 			do
 			{
 				cout << "Do you want to:\n a) Adjust the Drll Hole co-ordinates. \n b) Change grid co-ordinates. \n c) Ignore. " << endl;
@@ -203,6 +187,8 @@ double** Error_check::grid_greater_than_DH(int& max_x, int& max_y, double** DH, 
 	return(DH);
 	// delete after return
 }
+
+
 
 double ** Error_check::adjust_DH(double** DH, int& num, int i)
 { 
