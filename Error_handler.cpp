@@ -2,19 +2,22 @@
 #include "Error_handler.h"
 
 
-const double deci = 1e-6;
+const double deci = 1e-6; // small value to compare the difference between two double values
 
-double** valid_DH_values(double** DH, int num)
+double** Error_check::valid_DH_values(double** DH, int num)
 {
 	cout << "Checking that all Drill Hole grade values are between 1 and 0 inclusive........." << endl;
 
 	for (int i = 0; i < num; i++)
 	{
+		
 		if (((DH[i][2]) > 1.0) || ((DH[i][2]) < 0.0))
 		{
-			cout << "Look like Drill Hole " << i + 1 << " has an incorrect grade value." << endl;
+			cout << "Look like Drill Hole " << i + 1 << " has an invalid grade value." << endl;
 			cout << "The co-ordinates are: " << endl;
 			cout << "x: " << DH[i][0] << "\ny: " << DH[i][1] << endl;
+
+
 			string temp;
 			do
 			{
@@ -29,12 +32,12 @@ double** valid_DH_values(double** DH, int num)
 			} while (true);
 
 
-			DH[i][2] = stod(temp);
+			DH[i][2] = stod(temp); // converts the string to a double and assigns it to the DH array
 
 		}
 	}
 
-	// clear memory
+	// clear memory?
 	return (DH);
 }
 
@@ -47,7 +50,7 @@ double** valid_DH_values(double** DH, int num)
 
 
 
-double** repeat_DH_xy(double** DH, int& num)
+double** Error_check::repeat_DH_xy(double** DH, int& num)
 {
 
 	/* adds the frist drill hole from DH array to the new DH array then loops trhough
@@ -60,7 +63,7 @@ double** repeat_DH_xy(double** DH, int& num)
 	double** new_DH = new double* [num]; // creating a temporay Dh for the non repeated DH's
 	int new_num = 0; // new number of drill holes
 
-	cout << "Checking for any repeated Drill Holes........" << endl;
+	cout << "\nChecking for any repeated Drill Holes........\n";
 
 	for (int i = 0; i < num; i++)
 	{
@@ -97,9 +100,9 @@ double** repeat_DH_xy(double** DH, int& num)
 		}
 
 
-		if (is_duplicate == false)
+		if (!is_duplicate)
 		{
-			// Allocate memory for a new drill hole only when needed
+			// Allocate memory for a new drill hole only when not repeated
 			new_DH[new_num] = new double[3];
 			new_DH[new_num][0] = DH[i][0];
 			new_DH[new_num][1] = DH[i][1];
@@ -140,11 +143,11 @@ double** repeat_DH_xy(double** DH, int& num)
 
 
 
-double** grid_greater_than_DH(int& max_x, int& max_y, double** DH, double num_DH)
+double** Error_check::grid_greater_than_DH(int& max_x, int& max_y, double** DH, int num)
 {
 	cout << "Checking that your block model dimensions include all the Drill Holes........" << endl;
 
-	for (int i = 0; i < num_DH; i++)
+	for (int i = 0; i < num; i++)
 	{
 		if ((max_x < DH[i][0]) || (max_y < DH[i][1]))
 		{
@@ -165,101 +168,24 @@ double** grid_greater_than_DH(int& max_x, int& max_y, double** DH, double num_DH
 
 				if (temp == 'a')
 				{
-					do {
-						
-						string temp_x;
-						do
-						{
-							cout << "Change x from " << DH[i][0] << " to " << endl;
-							cin >> temp_x;
-
-							if (valid_int(temp_x) && stod(temp_x) > 0)// if number is valid then break
-							{
-								break;
-							}
-							cout << "Oops, looks like that entry didnt work. Try again: ";
-
-
-						} while (true); // repeats untill a valid number is entered
-
-						DH[i][0] = stod(temp_x); // assigns the string to the new grid x
-
-
-						string temp_y;
-						do
-						{
-							cout << "Change y from " << DH[i][1] << " to " << endl;
-							cin >> temp_y;
-
-							if (valid_int(temp_y) && stod(temp_y) > 0)// if number is valid then break
-							{
-								break;
-							}
-							cout << "Oops, looks like that entry didnt work. Try again: ";
-
-
-						} while (true); // repeats untill a valid number is entered
-
-						DH[i][1] = stod(temp_y); // assigns the string to the new grid y
-
-
-
-						true;
-					}while (false);
-
-
-					true;
+					adjust_DH(DH, num, i); // option to adjust the drill hole co-ordinates
+					
+					break;
 					
 				}
 				else if (temp == 'b') // allows user to change the grid size
 				{
 					cout << "Change grid x from " << max_x << "and Change grid y from " << max_y <<endl;
 					
-					
-					string temp_x;
-					do
-					{
-						cout << "Enter the new X value:" << endl;
-						cin >> temp_x;
+					adjust_grid(DH, max_x, max_y); // option to adjust the grid size
 
-						if (valid_int(temp_x) && stod(temp_x) > 0)// if number is valid then break
-						{
-							break;
-						}
-						cout << "Oops, looks like that entry didnt work. Try again: ";
-
-
-					} while (true); // repeats untill a valid number is entered
-
-					max_x = stod(temp_x); // assigns the string to the new grid x
-
-
-					string temp_y;
-					do
-					{
-						cout << "Enter the new Y value:" << endl;
-						cin >> temp_y;
-
-						if (valid_int(temp_y) && stod(temp_y) > 0)// if number is valid then break
-						{
-							break;
-						}
-						cout << "Oops, looks like that entry didnt work. Try again: ";
-
-
-					} while (true); // repeats untill a valid number is entered
-
-					max_y = stod(temp_y); // assigns the string to the new grid y
-					
-
-
-					true;
+					break;
 				}
 
 				else if (temp == 'c')
 				{
 					cout << "Ignoring Drill Hole " << i + 1 << endl;
-					true;
+					break;
 				}
 				else
 				{
@@ -267,9 +193,6 @@ double** grid_greater_than_DH(int& max_x, int& max_y, double** DH, double num_DH
 					
 				}
 			} while (false);
-
-
-			// deletes the DH that is outsie the domain 
 
 
 		}
@@ -281,4 +204,86 @@ double** grid_greater_than_DH(int& max_x, int& max_y, double** DH, double num_DH
 	// delete after return
 }
 
+double ** Error_check::adjust_DH(double** DH, int& num, int i)
+{ 
+	string temp_x;
+	do
+	{
+		cout << "Change x from " << DH[i][0] << " to " << endl;
+		cin >> temp_x;
 
+		if (valid_int(temp_x) && stod(temp_x) > 0)// if number is valid then break
+		{
+			break;
+		}
+		cout << "Oops, looks like that entry didnt work. Try again: ";
+
+
+	} while (true); // repeats untill a valid number is entered
+
+	DH[i][0] = stod(temp_x); // assigns the string to the new grid x
+
+
+	string temp_y;
+	do
+	{
+		cout << "Change y from " << DH[i][1] << " to " << endl;
+		cin >> temp_y;
+
+		if (valid_int(temp_y) && stod(temp_y) > 0)// if number is valid then break
+		{
+			break;
+		}
+		cout << "Oops, looks like that entry didnt work. Try again: ";
+
+
+	} while (true); // repeats untill a valid number is entered
+
+	DH[i][1] = stod(temp_y); // assigns the string to the new grid y
+
+	return(0);
+}
+
+
+
+double** Error_check::adjust_grid(double** DH, int& max_x, int& max_y)
+{
+	string temp_x;
+	do
+	{
+		cout << "Enter the new X value:" << endl;
+		cin >> temp_x;
+
+		if (valid_int(temp_x) && stoi(temp_x) > 0)// if number is valid then break
+		{
+			break;
+		}
+		cout << "Oops, looks like that entry didnt work. Try again: ";
+
+
+	} while (true); // repeats untill a valid number is entered
+
+	max_x = stoi(temp_x); // assigns the string to the new grid x
+
+
+	string temp_y;
+	do
+	{
+		cout << "Enter the new Y value:" << endl;
+		cin >> temp_y;
+
+		if (valid_int(temp_y) && stoi(temp_y) > 0)// if number is valid then break
+		{
+			break;
+		}
+		cout << "Oops, looks like that entry didnt work. Try again: ";
+
+
+	} while (true); // repeats untill a valid number is entered
+
+	max_y = stoi(temp_y); // assigns the string to the new grid y
+
+
+
+	return(0);
+}

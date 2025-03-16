@@ -17,8 +17,10 @@ using namespace std;
 int main(void)
 {
 	ask_usr user;
-	data_handle data; // calling the classes in the main function
+	data_handle data;
+	Error_check check;// calling the classes in the main function
 	cout << "Welcome to the Inverse Distance Weighting (IDW) program." << endl;
+
 	double power = user.get_power();
 
 	// asks user for power value and repeats untill in correct range
@@ -43,8 +45,7 @@ int main(void)
 			cout << "Oh no, lets try again." << endl;
 
 			
-		}
-		while (true);
+		}while (true);
 
 	string temp;
 	do {
@@ -57,17 +58,18 @@ int main(void)
 		}
 		cout << "Oops, looks like that entry didnt work. Try again: ";
 	} while (true);
+
 	int num_DH = stod(temp);
 
 	double** input_array = data.Create_DH_array(num_DH, grid_x, grid_y);
 
 	cout << "Before we start lets check for errors in the data. " << endl;
 	cout << "\n.............................................\n";
-	input_array = valid_DH_values(input_array, num_DH);
+	input_array = check.valid_DH_values(input_array, num_DH);
 	cout << "\n.............................................\n";
-	input_array = repeat_DH_xy(input_array, num_DH);
+	input_array = check.repeat_DH_xy(input_array, num_DH);
 	cout << "\n.............................................\n";
-	input_array = grid_greater_than_DH(grid_x, grid_y, input_array, num_DH);
+	input_array = check.grid_greater_than_DH(grid_x, grid_y, input_array, num_DH);
 	cout << "\n.............................................\n";
 
 	cout << "\nEverything seems in order lets begin." << endl; 

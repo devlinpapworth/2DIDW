@@ -23,12 +23,12 @@ double** data_handle::Create_DH_array(int num_DH, int x, int y)
 		}
 		else if (type == 'b') 
 		{
-			import_data_from_excel(DH_array, num_DH);//private member function only called if user selects this option
+			import_data_from_excel(DH_array, num_DH); //private member function only called if user selects this option
 			break;
 		}
 		else if (type == 'c') 
 		{
-			manually_enter_data(DH_array, num_DH);//private member function only called if user selects this option
+			manually_enter_data(DH_array, num_DH); //private member function only called if user selects this option
 			break;
 		}
 		else 
@@ -91,11 +91,11 @@ void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 	for (int i = 0; i < num_DH; i++) 
 	{
 		getline(myFile, row); // read row i
-		stringstream ss(row);
+		stringstream ss(row); // convert row to string stream
 		string value;
 		for (int j = 0; j < 3; j++) 
 		{
-			getline(ss, value, ',');
+			getline(ss, value, ','); // read value from row i, column j
 			DH_array[i][j] = stod(value);
 		}
 	}
@@ -104,7 +104,7 @@ void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 
 
 
-void data_handle::manually_enter_data(double** DH_array, int num_DH)
+void data_handle::manually_enter_data(double** DH_array, int num_DH) // reapting the process for each drill hole unutill required number of drill holes are entered
 {
 	for (int i = 0; i < num_DH; i++) {
 		cout << "Enter the data for Drill Hole " << i + 1 << endl;

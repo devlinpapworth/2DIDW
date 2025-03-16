@@ -11,7 +11,7 @@ bool valid_double(string str)
 			if (str[i] == '.')
 			{
 				count++;
-				if (count > 1) // if more than one decimal place = error
+				if (count > 1) // allows only one decimal point
 				{
 					return false;
 				}

@@ -15,7 +15,7 @@ int ask_usr::grid_size(int& grid_x, int& grid_y) // taking in where the memory o
 			cout << "X value:" << endl;
 			cin >> temp_x;
 
-			if (valid_int(temp_x) && stod(temp_x) > 0)// if number is valid then break
+			if (valid_int(temp_x) && stoi(temp_x) > 0)// if number is valid then break
 			{
 				break;
 			}
@@ -24,7 +24,7 @@ int ask_usr::grid_size(int& grid_x, int& grid_y) // taking in where the memory o
 
 		} while (true);
 
-		grid_x = stod(temp_x);
+		grid_x = stoi(temp_x);
 
 
 		string temp_y;
@@ -33,7 +33,7 @@ int ask_usr::grid_size(int& grid_x, int& grid_y) // taking in where the memory o
 			cout << "Y value:" << endl;
 			cin >> temp_y;
 
-			if (valid_int(temp_y) && stod(temp_y) > 0)// if number is valid then break
+			if (valid_int(temp_y) && stoi(temp_y) > 0)// if number is valid then break
 			{
 				break;
 			}
@@ -42,7 +42,7 @@ int ask_usr::grid_size(int& grid_x, int& grid_y) // taking in where the memory o
 
 		} while (true);
 
-		grid_y = stod(temp_y);
+		grid_y = stoi(temp_y);
 
 
 	return(0);
