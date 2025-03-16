@@ -18,7 +18,7 @@ int main(void)
 {
 	ask_usr user;
 	data_handle data; // calling the classes in the main function
-
+	cout << "Welcome to the Inverse Distance Weighting (IDW) program." << endl;
 	double power = user.get_power();
 
 	// asks user for power value and repeats untill in correct range
