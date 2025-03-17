@@ -13,7 +13,7 @@ double** data_handle::Create_DH_array(int num_DH, int x, int y)
 	char type;
 	do 
 	{
-		cout << "Would you like to \n a) use an example data set, \n b) import example data set from excel (include full path), \n c) manually enter Drill Hole data" << endl;
+		cout << "Would you like to \n a) use an example data set, \n b) import example data set from excel (include the full path), \n c) manually enter Drill Hole data" << endl;
 		cin >> type;
 
 		if (type == 'a') 
@@ -114,13 +114,13 @@ void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 			}
 			else
 			{
-				cout << "Oops, error reading Drill Hole: " << i + 1 <<endl;
+				cout << "Oops, error reading Drill Hole " << i + 1 <<endl;
 				string temp;
 				if(j==0)
 				{
 					do 
 					{
-						cout << "The x coordinate is not a valid number. Manually enter bellow: " << endl;
+						cout << "The x coordinate is not a valid number. Manually enter below: " << endl;
 						cin >> temp;
 						if (valid_double(temp) && stod(temp) > 0)
 						{
@@ -135,7 +135,7 @@ void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 				{
 					do 
 					{
-						cout << "The y coordinate is not a valid number. Manually enter bellow: " << endl;
+						cout << "The y coordinate is not a valid number. Manually enter below: " << endl;
 						cin >> temp;
 						if (valid_double(temp) && stod(temp) > 0)
 						{
@@ -151,7 +151,7 @@ void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 				{
 					do 
 					{
-						cout << "The grade value is not a valid number. Manually enter bellow: " << endl;
+						cout << "The grade value is not a valid number. Manually enter below: " << endl;
 						cin >> temp;
 						if (valid_double(temp) && stod(temp) >= 0 && stod(temp) <=1.)
 						{
@@ -241,12 +241,12 @@ void data_handle::count_rows(int num_DH, string filename)
 
 	if (num_rows < num_DH)
 	{
-		cout << "Your excel file "<< filename<< " doesn't have the enough drill holes" << endl;
+		cout << "Your excel file "<< filename<< " doesn't have the enough Drill Holes" << endl;
 		exit(0);
 	}
 	else if (num_rows > num_DH)
 	{
-		cout << "Your excel file " << filename << " has to many drill holes" << endl;
+		cout << "Your excel file " << filename << " has to many Drill Holes" << endl;
 		exit(0);
 	}
 	

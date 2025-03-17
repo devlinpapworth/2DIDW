@@ -14,7 +14,7 @@ double** Error_check::all_check(int& max_x, int& max_y, double** DH, int& num)
 	DH = grid_greater_than_DH(max_x, max_y, DH, num);
 	cout << "\n.............................................\n";
 
-	cout << "\nEverything seems in order lets begin." << endl;
+	cout << "\nEverything seems in order let's begin." << endl;
 
 	return(DH);
 
@@ -54,7 +54,7 @@ double** Error_check::valid_DH_values(double** DH, int num)
 				{
 					break;
 				}
-				cout << "Invalid number! Value shouuld be between 1 and 0!" << endl;
+				cout << "Invalid number! Value should be between 1 and 0!" << endl;
 
 			} while (true);
 
@@ -64,7 +64,7 @@ double** Error_check::valid_DH_values(double** DH, int num)
 		}
 	}
 
-	cout << "............all drill holes valid." << endl;
+	cout << "............all Drill Holes valid." << endl;
 	// clear memory?
 	return (DH);
 }
@@ -154,7 +154,7 @@ double** Error_check::repeat_DH_xy(double** DH, int& num)
 	}
 	else
 	{
-		cout << ".............there are no repeated drill holes" << endl;
+		cout << ".............there are no repeated Drill Holes" << endl;
 	}
 	// Update the number of drill holes after removing duplicates
 	
@@ -186,7 +186,7 @@ double** Error_check::grid_greater_than_DH(int& max_x, int& max_y, double** DH, 
 			do
 			{
 				cout << "Do you want to:\n a) Adjust the Drll Hole co-ordinates. \n b) Change grid co-ordinates. \n c) Ignore. " << endl;
-				cout << "Enter answer bellow: " << endl;
+				cout << "Enter answer below: " << endl;
 				cin >> temp;
 
 				if (temp == 'a')
@@ -198,7 +198,7 @@ double** Error_check::grid_greater_than_DH(int& max_x, int& max_y, double** DH, 
 				}
 				else if (temp == 'b') // allows user to change the grid size
 				{
-					cout << "Change grid x from " << max_x << "and Change grid y from " << max_y <<endl;
+					cout << "Change grid x from " << max_x << "and change grid y from " << max_y <<endl;
 					
 					adjust_grid(DH, max_x, max_y); // option to adjust the grid size
 
@@ -260,7 +260,7 @@ double ** Error_check::adjust_DH(double** DH, int& num, int i)
 		{
 			break;
 		}
-		cout << "Oops, looks like that entry didnt work. Try again: ";
+		cout << "Oops, looks like that entry didn't work. Try again: ";
 
 
 	} while (true); // repeats untill a valid number is entered
@@ -284,7 +284,7 @@ double** Error_check::adjust_grid(double** DH, int& max_x, int& max_y)
 		{
 			break;
 		}
-		cout << "Oops, looks like that entry didnt work. Try again: ";
+		cout << "Oops, looks like that entry didn't work. Try again: ";
 
 
 	} while (true); // repeats untill a valid number is entered
@@ -302,7 +302,7 @@ double** Error_check::adjust_grid(double** DH, int& max_x, int& max_y)
 		{
 			break;
 		}
-		cout << "Oops, looks like that entry didnt work. Try again: ";
+		cout << "Oops, looks like that entry didn't work. Try again: ";
 
 
 	} while (true); // repeats untill a valid number is entered

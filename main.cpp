@@ -43,14 +43,14 @@ int main(void)
 	
 	run_py();
 
-	cout << "\n Complete, clearing data \n";
+	cout << "\n IDW model is complete attempting to clear data \n";
 	for (int i = 0; i < num_DH; i++)
 	{
 		delete[] input_array[i];
 	}
 	delete[] input_array;
 
-	cout << "\n succes \n";
+	cout << "\n Succes clearing data. \n";
 
 }
 
