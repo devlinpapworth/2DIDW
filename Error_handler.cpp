@@ -198,7 +198,7 @@ double** Error_check::grid_greater_than_DH(int& max_x, int& max_y, double** DH, 
 				}
 				else if (temp == 'b') // allows user to change the grid size
 				{
-					cout << "Change grid x from " << max_x << "and change grid y from " << max_y <<endl;
+					cout << "Change grid x from " << max_x << " and change grid y from " << max_y <<endl;
 					
 					adjust_grid(DH, max_x, max_y); // option to adjust the grid size
 
