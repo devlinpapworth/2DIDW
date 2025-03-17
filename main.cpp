@@ -35,17 +35,8 @@ int main(void)
 
 	double** input_array = data.Create_DH_array(num_DH, grid_x, grid_y);
 
-	cout << "Before we start lets check for errors in the data. " << endl;
-	cout << "\n.............................................\n";
-	input_array = check.valid_DH_values(input_array, num_DH);
-	cout << "\n.............................................\n";
-	input_array = check.repeat_DH_xy(input_array, num_DH);
-	cout << "\n.............................................\n";
-	input_array = check.grid_greater_than_DH(grid_x, grid_y, input_array, num_DH);
-	cout << "\n.............................................\n";
+	input_array = check.all_check(grid_x, grid_y, input_array, num_DH);
 
-	cout << "\nEverything seems in order lets begin." << endl; 
-	
 	cout << "\n.............................................\n";
 	func.IDW_top_func(grid_x, grid_y, power, input_array, num_DH); 
 	cout << "\n.............................................\n";

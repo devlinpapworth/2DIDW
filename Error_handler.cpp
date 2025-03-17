@@ -3,6 +3,33 @@
 
 
 
+double** Error_check::all_check(int& max_x, int& max_y, double** DH, int num)
+{
+	cout << "Before we start lets check for errors in the data. " << endl;
+	cout << "\n.............................................\n";
+	DH = valid_DH_values(DH, num);
+	cout << "\n.............................................\n";
+	DH = repeat_DH_xy(DH, num);
+	cout << "\n.............................................\n";
+	DH = grid_greater_than_DH(max_x, max_y, DH, num);
+	cout << "\n.............................................\n";
+
+	cout << "\nEverything seems in order lets begin." << endl;
+
+	return(DH);
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 double** Error_check::valid_DH_values(double** DH, int num)
 {
