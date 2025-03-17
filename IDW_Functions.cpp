@@ -36,13 +36,6 @@ double IDW::IDW_top_func(double usr_grid_x, double usr_grid_y, double pow, doubl
 		outFile << "\n"; // if at the end of the row then add a new line
 	}
 
-
-	for (int i = 0; i < num_DH; i++)
-	{
-		delete[] input_array[i];
-	}
-	delete[] input_array;
-
 	return(0);
 }
 
