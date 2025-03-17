@@ -4,6 +4,7 @@
 #include"data_handle.h"
 #include"ask_usr.h"
 #include"Error_handler.h"
+#include"run_py_script.h"
 #include<string>
 
 #include <cstdlib> // For system()
@@ -41,28 +42,7 @@ int main(void)
 	func.IDW_top_func(grid_x, grid_y, power, input_array, num_DH); 
 	cout << "\n.............................................\n";
 	
-	char Y_N;
-	cout << "Would you like to diplay the data in a block model? " << endl;
-	cout << "y/n" << endl;
-	cin >> Y_N;
-
-
-	if (Y_N == 'y' || Y_N == 'Y')
-	{
-		cout << "Please note this will run a python script to show the resuluts graphically and that is not my own work. It has been generated with online resources and chat GPT." << endl;
-		cout << "Running Python script...\n";
-		int result = system("python displa_DHDB.py");
-		if (result == 0)
-		{
-			cout << "Python script executed successfully.\n";
-		}
-		else
-		{
-			cout << "Failed to execute Python script.\n";
-		}
-	}
-	
-	
+	run_py();
 
 	cout << "\n Complete, clearing data \n";
 	for (int i = 0; i < num_DH; i++)
@@ -74,3 +54,4 @@ int main(void)
 	cout << "\n succes \n";
 
 }
+

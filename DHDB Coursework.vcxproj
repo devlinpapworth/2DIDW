@@ -129,6 +129,7 @@
     <ClCompile Include="Error_handler.cpp" />
     <ClCompile Include="IDW_Functions.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="run_py_script.cpp" />
     <ClCompile Include="valid_num.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +137,7 @@
     <ClInclude Include="data_handle.h" />
     <ClInclude Include="Error_handler.h" />
     <ClInclude Include="IDW_Functions.h" />
+    <ClInclude Include="run_py_script.h" />
     <ClInclude Include="valid_num.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -33,6 +33,9 @@
     <ClCompile Include="valid_num.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="run_py_script.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IDW_Functions.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="valid_num.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="run_py_script.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
