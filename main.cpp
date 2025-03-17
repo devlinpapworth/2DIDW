@@ -26,33 +26,12 @@ int main(void)
 	cout << "Welcome to the Inverse Distance Weighting (IDW) program." << endl;
 
 	double power = user.get_power();
-
-	// asks user for power value and repeats untill in correct range
-		
-	int grid_x, grid_y;
-
-	do 
-		{
-			user.grid_size(grid_x, grid_y);
-			char Y_N;
-			cout << "Your grid dimensions are " << grid_x << "x by " << grid_y << "y" << endl;
-		
-			cout << "Is this correct (y/n): " << endl;
-			cin >> Y_N;
-
-			if (Y_N == 'y' || Y_N =='Y')
-			{
-				cout << "\nAmazing! Lets start." << endl;
-				break;
-			}
-
-			cout << "Oh no, lets try again." << endl;
-
 			
-		}while (true);
+	int grid_x, grid_y;
+	user.grid_check(grid_x, grid_y);
 
 
-	int num_DH = stoi(temp);
+	int num_DH = user.get_num_DH();
 
 	double** input_array = data.Create_DH_array(num_DH, grid_x, grid_y);
 
