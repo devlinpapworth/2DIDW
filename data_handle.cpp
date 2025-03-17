@@ -77,11 +77,12 @@ void data_handle::use_example_data(double** DH_array, int num_DH, int x, int y)
 
 void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 {
-
+	fstream myFile;
 
 	string filename;
 	cout << "Enter the file name: " << endl;
 	cin >> filename;
+
 	count_rows(num_DH, filename);
 
 	myFile.open(filename, fstream::in); // open file to read in
@@ -126,9 +127,9 @@ void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 							DH_array[i][j] = stod(temp);
 							break;
 						}
+						cout << "That didn't work try again." << endl;
 					} while(true);
-
-					cout << "That didn't work try again." << endl;
+										
 				}
 				else if(j==1)
 				{
@@ -141,10 +142,11 @@ void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 							DH_array[i][j] = stod(temp);
 							break;
 						}
-					} while (true);
 
-					cout << "That didn't work try again." << endl;
+						cout << "That didn't work try again." << endl;
+					} while (true);
 				}
+
 				else if(j==2)
 				{
 					do 
@@ -156,9 +158,8 @@ void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 							DH_array[i][j] = stod(temp);
 							break;
 						}
-
+						cout << "That didn't work try again." << endl;
 					} while (true);
-					cout << "That didn't work try again." << endl;
 				}
 
 			}
@@ -220,11 +221,16 @@ void data_handle::manually_enter_data(double** DH_array, int num_DH) // reapting
 
 
 
-int data_handle::count_rows(int num_DH, string filename)
+void data_handle::count_rows(int num_DH, string filename)
 {
-	
+	fstream myFile;
 	myFile.open(filename, fstream::in); // open file to read in
 
+	if (myFile.fail())
+	{
+		cout << "Error opening file or empty file." << endl;
+		exit(0);
+	}
 
 	string row;
 	int num_rows = 0;
@@ -232,13 +238,18 @@ int data_handle::count_rows(int num_DH, string filename)
 	{
 		num_rows++;
 	}
-	cout << num_rows;
-	cout << num_DH;
-	if (num_rows != num_DH)
+
+	if (num_rows < num_DH)
 	{
-		cout << "Your excell file "<< filename<< " doesn't have the same number of drill holes that you entered." << endl;
+		cout << "Your excel file "<< filename<< " doesn't have the enough drill holes" << endl;
 		exit(0);
 	}
+	else if (num_rows > num_DH)
+	{
+		cout << "Your excel file " << filename << " has to many drill holes" << endl;
+		exit(0);
+	}
+	
 	myFile.close();
-	return(0);
+	
 }
