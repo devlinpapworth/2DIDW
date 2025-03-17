@@ -22,8 +22,8 @@ int main(void)
 	IDW func;// calling the classes in the main function
 	
 	
-	
-	cout << "Welcome to the Inverse Distance Weighting (IDW) program." << endl;
+			
+	cout << "\n\t\t\tWelcome to the Inverse Distance Weighting (IDW) program.\n\n" << endl;
 
 	double power = user.get_power();
 			

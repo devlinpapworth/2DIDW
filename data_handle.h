@@ -22,5 +22,5 @@ private: // self contained within class so only called in when user needs in the
 	void import_data_from_excel(double** DH_array, int num_DH);
 	void manually_enter_data(double** DH_array, int num_DH);
 	
-	void count_rows(int num_DH, string filename);
+	void count_rows(int num_DH, string filename); // used inside import function to check that the file includes the correct values
 };	

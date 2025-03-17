@@ -6,8 +6,8 @@ double ask_usr::get_power()
 {
 
 	string temp;
-	cout << "The power in the IDW formula controls the influence of distance. A Power value closer to 1 alows" <<
-		" for a more gradual and smooth output, where a higher value weights distance more signficantly and therefor a sharper output." << endl;
+	cout << "The power in the IDW formula controls the influence of distance. Increasing the power gives more weight to nearby points,"<<
+		 "making the interpolation sharper." << endl;
 
 	do
 	{
