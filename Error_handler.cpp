@@ -64,6 +64,7 @@ double** Error_check::valid_DH_values(double** DH, int num)
 		}
 	}
 
+	cout << "............all drill holes valid." << endl;
 	// clear memory?
 	return (DH);
 }
@@ -152,7 +153,7 @@ double** Error_check::repeat_DH_xy(double** DH, int& num)
 	}
 	else
 	{
-		cout << "There are no repeated drill holes" << endl;
+		cout << ".............there are no repeated drill holes" << endl;
 	}
 	// Update the number of drill holes after removing duplicates
 	
@@ -220,8 +221,9 @@ double** Error_check::grid_greater_than_DH(int& max_x, int& max_y, double** DH, 
 
 	}
 
-
+	cout << "............ Block Model size is valid." << endl;
 	return(DH);
+	
 	// delete after return
 }
 
