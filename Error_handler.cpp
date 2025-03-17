@@ -3,7 +3,7 @@
 
 
 
-double** Error_check::all_check(int& max_x, int& max_y, double** DH, int num)
+double** Error_check::all_check(int& max_x, int& max_y, double** DH, int& num)
 {
 	cout << "Before we start lets check for errors in the data. " << endl;
 	cout << "\n.............................................\n";
@@ -145,7 +145,8 @@ double** Error_check::repeat_DH_xy(double** DH, int& num)
 
 	if(num!=new_num) // if any drill holes have been repeated 
 	{
-		num = new_num;
+		num = new_num; // update the number of drill holes
+
 		cout << "The corrected Drill holes are as follows: " << endl;
 		for (int i = 0; i < new_num; i++) {
 			cout << i + 1 << "\t" << new_DH[i][0] << "\t" << new_DH[i][1] << "\t" << new_DH[i][2] << endl;

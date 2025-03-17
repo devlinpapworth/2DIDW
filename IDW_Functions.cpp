@@ -62,7 +62,8 @@ double IDW::run_IDW_for_one_block(double target_x, double target_y, double Pow, 
 
 		if ((fabs(target_x - x) > deci) || (fabs(target_y - y) > deci))
 		{
-			/*if the target square x and y are both different then valid = 1 allowing the IDW to run. If they are both the same then there is already data in that square so dont need to run the IDW*/
+			/*if the target square x and y are both different then valid = 1 allowing the IDW to run. 
+			If they are both the same then there is already data in that square so dont need to run the IDW*/
 			valid = 1;
 		}
 		else // if that IDW cannot run then break this loop

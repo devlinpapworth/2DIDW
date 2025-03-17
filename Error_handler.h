@@ -10,7 +10,7 @@ class Error_check
 {
 	const double deci = 1e-6; // small value to compare the difference between two double values
 public:
-	double** all_check(int& max_x, int& max_y, double** DH, int num);
+	double** all_check(int& max_x, int& max_y, double** DH, int& num);
 private:
 	double** valid_DH_values(double** DH, int num);
 	double** repeat_DH_xy(double** DH, int& num);
