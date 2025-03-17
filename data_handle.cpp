@@ -47,7 +47,14 @@ double** data_handle::Create_DH_array(int num_DH, int x, int y)
 		cout << "DH " << i + 1 << ": X = " << DH_array[i][0] << ", Y = " << DH_array[i][1] << ", Grade = " << DH_array[i][2] << endl;
 	}
 
-	return DH_array;
+	return (DH_array);
+
+	for (int i = 0; i < num_DH; i++)
+	{
+		delete[] DH_array[i];
+	}
+	delete[] DH_array;
+	
 
 }
 
@@ -81,7 +88,8 @@ void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 	cout << "Enter the file name: " << endl;
 	cin >> filename;
 	fstream myFile;
-	myFile.open(filename, fstream::in);
+	myFile.open(filename, fstream::in); // open file to read in
+
 	if (myFile.fail())
 	{
 		cout << "Error opening file or empty file." << endl;
@@ -151,6 +159,5 @@ void data_handle::manually_enter_data(double** DH_array, int num_DH) // reapting
 		} while (true);
 	}
 }
-
 
 

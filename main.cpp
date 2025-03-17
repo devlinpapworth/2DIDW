@@ -7,7 +7,6 @@
 #include"run_py_script.h"
 #include<string>
 
-#include <cstdlib> // For system()
 #pragma once
 
 
