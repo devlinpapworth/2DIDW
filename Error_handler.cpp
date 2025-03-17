@@ -125,10 +125,10 @@ double** Error_check::repeat_DH_xy(double** DH, int& num)
 		{
 			// Allocate memory for a new drill hole only when not repeated
 			new_DH[new_num] = new double[3];
-			new_DH[new_num][0] = DH[i][0];
+			new_DH[new_num][0] = DH[i][0]; // assinging the new co-ords and value
 			new_DH[new_num][1] = DH[i][1];
 			new_DH[new_num][2] = DH[i][2];
-			new_num++;
+			new_num++; // add one to the new number of drill holes
 		}
 
 
@@ -142,13 +142,22 @@ double** Error_check::repeat_DH_xy(double** DH, int& num)
 	}
 	delete[] DH;
 
-	// Update the number of drill holes after removing duplicates
-	num = new_num;
-
-	cout << "The corrected Drill holes are as follows: " << endl;
-	for (int i = 0; i < new_num; i++) {
-		cout << i + 1 << "\t" << new_DH[i][0] << "\t" << new_DH[i][1] << "\t" << new_DH[i][2] << endl;
+	if(num!=new_num) // if any drill holes have been repeated 
+	{
+		num = new_num;
+		cout << "The corrected Drill holes are as follows: " << endl;
+		for (int i = 0; i < new_num; i++) {
+			cout << i + 1 << "\t" << new_DH[i][0] << "\t" << new_DH[i][1] << "\t" << new_DH[i][2] << endl;
+		}
 	}
+	else
+	{
+		cout << "There are no repeated drill holes" << endl;
+	}
+	// Update the number of drill holes after removing duplicates
+	
+
+	
 
 	return(new_DH);
 }
