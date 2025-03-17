@@ -11,6 +11,7 @@ using namespace std;
 class IDW
 {
 	const double deci = 1e-6;
+
 	double top, bottom;
 
 	public:
