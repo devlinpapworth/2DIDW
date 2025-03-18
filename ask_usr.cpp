@@ -4,7 +4,7 @@
 
 double ask_usr::get_power()
 {
-
+	/*Promts the user to enter pow variable*/
 	string temp;
 	cout << "The power in the IDW formula controls the influence of distance. Increasing the power gives more weight to nearby points,"<<
 		 " making the interpolation sharper." << endl;
@@ -32,6 +32,8 @@ double ask_usr::get_power()
 
 int ask_usr::get_num_DH()
 {
+	/*Promts the user to enter the number of drill holes*/
+
 	string temp;
 	do {
 		cout << "How many Drill Holes do you want to enter? " << endl;
@@ -50,6 +52,7 @@ int ask_usr::get_num_DH()
 
 int ask_usr::grid_check(int& grid_x, int& grid_y)
 {
+	/*Confirms that the user is happy with grid size*/
 	do
 	{
 		grid_size(grid_x, grid_y);
@@ -77,7 +80,7 @@ int ask_usr::grid_check(int& grid_x, int& grid_y)
 int ask_usr::grid_size(int& grid_x, int& grid_y) // taking in where the memory of grid x,y is stored and editing it in the member function
 {
 
-	// ask user to define the size of the output grid
+	/*Promts the user to enter the grid size and checks the input*/
 
 	cout << "Enter the dimensions of your output block model grid. " << endl;
 	string temp_x;
