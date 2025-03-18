@@ -32,7 +32,8 @@ double ask_usr::get_power()
 
 int ask_usr::get_num_DH(int x, int y)
 {
-	/*Promts the user to enter the number of drill holes and checks that is is less than the total number of grid sqaures in the block model.*/
+	/*Prompts the user to enter the number of drill holes and checks that it is less than the total number of grid squares in the block model.*/
+
 	int total_sqr = x * y;
 	int num;
 	string temp;
@@ -42,27 +43,22 @@ int ask_usr::get_num_DH(int x, int y)
 		if (valid_int(temp) && stoi(temp) > 0)
 		{
 			num = stoi(temp);
-			break;
-
+			if (num < total_sqr)
+			{
+				break;
+			}
+			else
+			{
+				cout << "That won't work. You entered more Drill Holes than squares in your Block Model." << endl;
+			}
 		}
-		cout << "Oops, looks like that entry didn't work. Try again: ";
-	} while (true);
-	
-	cout << "That won't work. You entered more Drill Holes then squares in your Block Model." << endl;
-	do
-	{
-		cout << "How many Drill Holes do you want to enter? " << endl;
-		cin >> temp;
-		if (valid_int(temp) && stoi(temp) > 0)
+		else
 		{
-			num = stoi(temp);
-			break;
+			cout << "Oops, looks like that entry didn't work. Try again: ";
 		}
-		cout << "Oops, looks like that entry didn't work. Try again: ";
-	} while (num >= total_sqr);
-	
+	} while (true);
 
-	return(num);
+	return num;
 }
 
 
