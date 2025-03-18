@@ -108,21 +108,26 @@ void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 		for (int j = 0; j < 3; j++) 
 		{
 			getline(ss, value, ','); // read value from row i, column j
-			if (valid_double(value))
+			if (j==2 && valid_double(value))
+			{
+				DH_array[i][j] = stod(value);
+			}
+			else if (j < 2 && valid_int(value))
 			{
 				DH_array[i][j] = stod(value);
 			}
 			else
 			{
 				cout << "Oops, error reading Drill Hole " << i + 1 <<endl;
-				string temp;
+				
 				if(j==0)
 				{
 					do 
 					{
+						string temp;
 						cout << "The x coordinate is not a valid number. Manually enter below: " << endl;
 						cin >> temp;
-						if (valid_double(temp) && stod(temp) > 0)
+						if (valid_int(temp) && stoi(temp) > 0)
 						{
 							DH_array[i][j] = stod(temp);
 							break;
@@ -135,9 +140,10 @@ void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 				{
 					do 
 					{
+						string temp;
 						cout << "The y coordinate is not a valid number. Manually enter below: " << endl;
 						cin >> temp;
-						if (valid_double(temp) && stod(temp) > 0)
+						if (valid_int(temp) && stoi(temp) > 0)
 						{
 							DH_array[i][j] = stod(temp);
 							break;
@@ -151,6 +157,7 @@ void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 				{
 					do 
 					{
+						string temp;
 						cout << "The grade value is not a valid number. Manually enter below: " << endl;
 						cin >> temp;
 						if (valid_double(temp) && stod(temp) >= 0 && stod(temp) <=1.)
