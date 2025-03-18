@@ -11,7 +11,7 @@ double ask_usr::get_power()
 
 	do
 	{
-		cout << "Enter Power value (Recomended between 1-2):" << endl;
+		cout << "Enter Power value (Recommended between 1-2):" << endl;
 		cin >> temp;
 
 		if (valid_double(temp) && stod(temp) > 0)// if number is valid then break
