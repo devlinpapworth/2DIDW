@@ -1,7 +1,12 @@
 #include"valid_num.h"
 
+/*These functions are called repeatedly and take the users input as a string and checks each 'letter' of the string to see if it passed the respective test of integer or double*/
+
 bool valid_double(string str)
 {
+
+	
+
 	int count = 0;
 
 	for (int i = 0; i < str.length(); i++) // loops through each char of string
@@ -25,7 +30,7 @@ bool valid_double(string str)
 		}
 	}
 
-	return true;
+	return true; // if string is a digit
 }
 
 
@@ -43,5 +48,5 @@ bool valid_int(string str)
 		}
 	}
 
-	return true;
+	return true; // if string is a digit
 }
