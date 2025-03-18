@@ -108,11 +108,11 @@ void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 		for (int j = 0; j < 3; j++) 
 		{
 			getline(ss, value, ','); // read value from row i, column j
-			if (j==2 && valid_double(value))
+			if (j == 2 && valid_double(value)) // tests that the value is a valid double
 			{
 				DH_array[i][j] = stod(value);
 			}
-			else if (j < 2 && valid_int(value))
+			else if (j < 2 && valid_int(value)) // tests if co-ords are ints although stored as doubles in DH_array
 			{
 				DH_array[i][j] = stod(value);
 			}
