@@ -26,7 +26,7 @@ double IDW::IDW_top_func(double usr_grid_x, double usr_grid_y, double pow, doubl
 
 			double val = run_IDW_for_one_block(i, j, pow, input_array, num_DH);
 
-			outFile << fixed << setprecision(2) << val; // writes the value to the output file with two decimal places
+			outFile << fixed << setprecision(4) << val; // writes the value to the output file with two decimal places
 			if (i < usr_grid_x)
 			{
 				outFile << ","; // if not at the end of the row then add a comma
