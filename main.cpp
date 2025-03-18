@@ -31,7 +31,7 @@ int main(void)
 	user.grid_check(grid_x, grid_y);
 
 
-	int num_DH = user.get_num_DH();
+	int num_DH = user.get_num_DH(grid_x, grid_y);
 
 	double** input_array = data.Create_DH_array(num_DH, grid_x, grid_y); // creating the array to store the data
 

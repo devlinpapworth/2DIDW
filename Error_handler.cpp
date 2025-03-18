@@ -35,7 +35,7 @@ double** Error_check::all_check(int& max_x, int& max_y, double** DH, int& num)
 
 double** Error_check::valid_DH_values(double** DH, int num)
 {
-	/**/
+	/*Checks that all the grade values are valid.*/
 
 	cout << "Checking that all Drill Hole grade values are between 1 and 0 inclusive........." << endl;
 

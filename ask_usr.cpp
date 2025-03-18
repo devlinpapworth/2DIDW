@@ -30,23 +30,41 @@ double ask_usr::get_power()
 }
 
 
-int ask_usr::get_num_DH()
+int ask_usr::get_num_DH(int x, int y)
 {
 	/*Promts the user to enter the number of drill holes*/
-
+	int num;
 	string temp;
 	do {
 		cout << "How many Drill Holes do you want to enter? " << endl;
 		cin >> temp;
 		if (valid_int(temp) && stoi(temp) > 0)
 		{
+			num = stoi(temp);
 			break;
 
 		}
 		cout << "Oops, looks like that entry didn't work. Try again: ";
 	} while (true);
+	
+	//if (num >= (x * y))
+	//{
+		cout << "That won't work. You entered more Drill Holes then squares in your Block Model." << endl;
+		do
+		{
+			cout << "How many Drill Holes do you want to enter? " << endl;
+			cin >> temp;
+			if (valid_int(temp) && stoi(temp) > 0)
+			{
+				num = stoi(temp);
+				break;
 
-	return(stoi(temp));
+			}
+			cout << "Oops, looks like that entry didn't work. Try again: ";
+		} while (num >= (x * y));
+	//}
+
+	return(num);
 }
 
 
