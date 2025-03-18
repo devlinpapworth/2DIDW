@@ -5,6 +5,8 @@
 
 double** Error_check::all_check(int& max_x, int& max_y, double** DH, int& num)
 {
+	// main error checking member function that calls all the other error checking functions
+
 	cout << "Before we start lets check for errors in the data. " << endl;
 	cout << "\n.............................................\n";
 	DH = valid_DH_values(DH, num);
@@ -33,6 +35,8 @@ double** Error_check::all_check(int& max_x, int& max_y, double** DH, int& num)
 
 double** Error_check::valid_DH_values(double** DH, int num)
 {
+	/**/
+
 	cout << "Checking that all Drill Hole grade values are between 1 and 0 inclusive........." << endl;
 
 	for (int i = 0; i < num; i++)
@@ -76,9 +80,8 @@ double** Error_check::valid_DH_values(double** DH, int num)
 double** Error_check::repeat_DH_xy(double** DH, int& num)
 {
 
-	/* adds the frist drill hole from DH array to the new DH array then loops trhough
-	the next drill hole from the old DH array
-	seeing if it is in the new DH array if it is then you can delete it */
+	/* adds the first DH from DH array to the new DH array. Then loops through
+	the next DH from the old DH array seeing if it is in the new DH array, if it is then you deletes it and corrects the new number of DH. */
 
 
 
@@ -168,6 +171,9 @@ double** Error_check::repeat_DH_xy(double** DH, int& num)
 
 double** Error_check::grid_greater_than_DH(int& max_x, int& max_y, double** DH, int num)
 {
+	/* checks that the grid size is greater than all the drill hole co - ordinates allowing user to correct either the drill hole or the grid size.*/
+
+
 	cout << "Checking that your block model dimensions include all the Drill Holes........" << endl;
 
 	for (int i = 0; i < num; i++)
@@ -232,6 +238,8 @@ double** Error_check::grid_greater_than_DH(int& max_x, int& max_y, double** DH, 
 
 double ** Error_check::adjust_DH(double** DH, int& num, int i)
 { 
+	/*Allows user to correct a drill hole*/
+
 	string temp_x;
 	do
 	{
@@ -274,6 +282,9 @@ double ** Error_check::adjust_DH(double** DH, int& num, int i)
 
 double** Error_check::adjust_grid(double** DH, int& max_x, int& max_y)
 {
+
+	/*Allows user to correct the grid size*/
+
 	string temp_x;
 	do
 	{
