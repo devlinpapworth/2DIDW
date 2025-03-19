@@ -87,6 +87,7 @@ void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 	fstream myFile;
 
 	string filename;
+	cout << "Ensure the file only contains the first collum as the x coordinates, second as the y coordinates, third as the grade value. (DHDB_Input.csv is included in the zip and contains 340 drill holes): " << endl;
 	cout << "Enter the file name: " << endl;
 	cin >> filename;
 
