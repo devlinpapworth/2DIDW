@@ -2,21 +2,19 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-# Read data from the CSV file (make sure to provide the correct file path)
-file_path = r'IDW_output.csv'  # Change this to the path of your CSV file
-data = pd.read_csv(file_path, header=None)  # Assuming no header row, if there is one, adjust accordingly
+# Read data from the CSV file 
+file_path = r'IDW_output.csv' 
+data = pd.read_csv(file_path, header=None)  # Assuming no header row
 
 # Convert the data to a NumPy array
 data_array = data.to_numpy()
 
-# Get the shape of the data (for automatically adjusting grid size)
 rows, cols = data_array.shape
 
 # Create a figure and axis with an automatically adjusted size
-fig, ax = plt.subplots(figsize=(cols / 10, rows / 10))  # Adjust the figure size based on the data dimensions
+fig, ax = plt.subplots(figsize=(cols / 10, rows / 10))  
 
-# Choose any color map from the list above
-cax = ax.matshow(data_array, cmap='Spectral')  # Change 'viridis' to any other color map like 'plasma', 'inferno', etc.
+cax = ax.matshow(data_array, cmap='Spectral')  
 
 # Add a color bar
 fig.colorbar(cax)

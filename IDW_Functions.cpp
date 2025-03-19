@@ -6,11 +6,9 @@ fstream myFile;
 
 double IDW::IDW_top_func(double usr_grid_x, double usr_grid_y, double pow, double** input_array, int num_DH)
 {
-	string filename;
-	cout << "Enter your desired output file name. (Include full path)" << endl;
-	cin >> filename;
+	
 	double count = 0;
-	ofstream outFile(filename); // Open file for writing
+	ofstream outFile("IDW_output.csv"); // Open file for writing
 
 	if (!outFile) 
 	{
