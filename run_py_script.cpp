@@ -7,7 +7,7 @@
 void run_py()
 {
 	char Y_N;
-	cout << "Would you like to diplay the data in a block model? " << endl;
+	cout << "Would you like to diplay the data in a block model? Required packages needed: matplotlib, numpy, pandas" << endl;
 	cout << "y/n" << endl;
 	cin >> Y_N;
 

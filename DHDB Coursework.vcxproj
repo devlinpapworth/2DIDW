@@ -140,6 +140,9 @@
     <ClInclude Include="run_py_script.h" />
     <ClInclude Include="valid_num.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="displa_DHDB.py" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
