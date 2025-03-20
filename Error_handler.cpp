@@ -5,7 +5,7 @@
 
 double** Error_check::all_check(int& max_x, int& max_y, double** DH, int& num)
 {
-	// main error checking member function that calls all the other error checking functions
+	// main error checking member function that calls all the other private error checking functions in
 
 	cout << "Before we start lets check for errors in the data. " << endl;
 	cout << "\n.............................................\n";
@@ -44,7 +44,7 @@ double** Error_check::valid_DH_values(double** DH, int num)
 		
 		if (((DH[i][2]) > 1.0) || ((DH[i][2]) < 0.0))
 		{
-			cout << "Look like Drill Hole " << i + 1 << " has an invalid grade value." << endl;
+			cout << "Looks like Drill Hole " << i + 1 << " has an invalid grade value." << endl;
 			cout << "The co-ordinates are: " << endl;
 			cout << "x: " << DH[i][0] << "\ny: " << DH[i][1] << endl;
 
@@ -80,8 +80,8 @@ double** Error_check::valid_DH_values(double** DH, int num)
 double** Error_check::repeat_DH_xy(double** DH, int& num)
 {
 
-	/* adds the first DH from DH array to the new DH array. Then loops through
-	the next DH from the old DH array seeing if it is in the new DH array, if it is then you deletes it and corrects the new number of DH. */
+	/* Adds the first DH from DH array to the new DH array. Then loops through
+	the next DH from the old DH array seeing if it is in the new DH array, if it is then it deletes it and corrects the new number of DH's. */
 
 
 
@@ -253,7 +253,7 @@ double ** Error_check::adjust_DH(double** DH, int& num, int i)
 		cout << "Oops, looks like that entry didnt work. Try again: ";
 
 
-	} while (true); // repeats untill a valid number is entered
+	} while (true); // repeats until a valid number is entered
 
 	DH[i][0] = stod(temp_x); // assigns the string to the new grid x
 
@@ -271,7 +271,7 @@ double ** Error_check::adjust_DH(double** DH, int& num, int i)
 		cout << "Oops, looks like that entry didn't work. Try again: ";
 
 
-	} while (true); // repeats untill a valid number is entered
+	} while (true); // repeats until a valid number is entered
 
 	DH[i][1] = stod(temp_y); // assigns the string to the new grid y
 
@@ -298,7 +298,7 @@ double** Error_check::adjust_grid(double** DH, int& max_x, int& max_y)
 		cout << "Oops, looks like that entry didn't work. Try again: ";
 
 
-	} while (true); // repeats untill a valid number is entered
+	} while (true); // repeats until a valid number is entered
 
 	max_x = stoi(temp_x); // assigns the string to the new grid x
 
@@ -316,7 +316,7 @@ double** Error_check::adjust_grid(double** DH, int& max_x, int& max_y)
 		cout << "Oops, looks like that entry didn't work. Try again: ";
 
 
-	} while (true); // repeats untill a valid number is entered
+	} while (true); // repeats until a valid number is entered
 
 	max_y = stoi(temp_y); // assigns the string to the new grid y
 

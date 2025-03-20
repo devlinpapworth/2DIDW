@@ -82,13 +82,13 @@ void data_handle::use_example_data(double** DH_array, int num_DH, int x, int y)
 
 void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 {
-	/*Imports data from excell file. Intially checks if the file contains the correct amount of data, if so it will then read in one row at a time as as string.
-	Then in this string it takes out each elemnt that is seperated by a comma assinging it to the correct value in DH array.  */
+	/*Imports data from excel file. Intially checks if the file contains the correct amount of data, if so it will then read in one row at a time as as string.
+	Then in this string it takes out each elemnt that is seperated by a comma assigning it to the correct value in DH array.  */
 	fstream myFile;
 
 	string filename;
-	cout << "Ensure the file only contains the first collum as the x coordinates, second as the y coordinates, third as the grade value. (DHDB_Input.csv is included in the zip and contains 340 drill holes): " << endl;
-	cout << "Enter the file name: " << endl;
+	cout << "Ensure the file only contains the first collun as the x coordinates, second as the y coordinates, third as the grade value. (DHDB_Input.csv is included in the zip and contains 340 drill holes): " << endl;
+	cout << "Enter the filename: " << endl;
 	cin >> filename;
 
 	count_rows(num_DH, filename);
@@ -185,9 +185,9 @@ void data_handle::import_data_from_excel(double** DH_array, int num_DH)
 
 
 
-void data_handle::manually_enter_data(double** DH_array, int num_DH) // reapting the process for each drill hole unutill required number of drill holes are entered
+void data_handle::manually_enter_data(double** DH_array, int num_DH) // reapting the process for each drill hole untill required number of drill holes are entered
 {
-	/*Lets the user manually enter easch DH's value at a time.*/
+	/*Lets the user manually enter each DH's value at a time.*/
 	for (int i = 0; i < num_DH; i++) {
 		cout << "Enter the data for Drill Hole " << i + 1 << endl;
 
@@ -239,7 +239,7 @@ void data_handle::manually_enter_data(double** DH_array, int num_DH) // reapting
 
 void data_handle::count_rows(int num_DH, string filename)
 {
-	/*Checks if the excell file contains the correct number of drill holes*/
+	/*Checks if the excel file contains the correct number of drill holes*/
 	fstream myFile;
 	myFile.open(filename, fstream::in); // open file to read in
 
@@ -263,7 +263,7 @@ void data_handle::count_rows(int num_DH, string filename)
 	}
 	else if (num_rows > num_DH)
 	{
-		cout << "Your excel file " << filename << " has to many Drill Holes" << endl;
+		cout << "Your excel file " << filename << " has too many Drill Holes" << endl;
 		exit(0);
 	}
 	
