@@ -196,7 +196,7 @@ void data_handle::manually_enter_data(double** DH_array, int num_DH) // reapting
 			string temp;
 			cout << "Enter X: ";
 			cin >> temp;
-			if (valid_int(temp) && stod(temp) > 0) 
+			if (valid_int(temp) && stoi(temp) >= 0) 
 			{
 				DH_array[i][0] = stod(temp);// stores as double in the DH array but checks if the input is an int
 				break;
@@ -210,7 +210,7 @@ void data_handle::manually_enter_data(double** DH_array, int num_DH) // reapting
 			string temp;
 			cout << "Enter Y: ";
 			cin >> temp;
-			if (valid_int(temp) && stod(temp) > 0) 
+			if (valid_int(temp) && stoi(temp) >= 0) 
 			{
 				DH_array[i][1] = stod(temp); // stores as double in the DH array but checks if the input is an int
 				break;

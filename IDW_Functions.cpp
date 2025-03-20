@@ -114,7 +114,7 @@ double IDW::run_IDW_for_one_block(double target_x, double target_y, double Pow, 
 double IDW::prog_perc(double x, double y, double num, double i)
 {
 	
-	double progress = (i / ((x * y)-num)) * 100;
+	double progress = (i / ((x * y))) * 100;
 
 	cout << "\rProgress: " << trunc(progress + 0.5) << "%" << flush;
 	// rewrites over the line updating with the current percentage complete
