@@ -36,7 +36,7 @@ double IDW::IDW_top_func(double usr_grid_x, double usr_grid_y, double pow, doubl
 
 		outFile << "\n"; // if at the end of the row then add a new line
 	}
-
+	outFile.close();
 	return(0);
 }
 
@@ -114,7 +114,7 @@ double IDW::run_IDW_for_one_block(double target_x, double target_y, double Pow, 
 double IDW::prog_perc(double x, double y, double num, double i)
 {
 	
-	double progress = (i / (x * y)) * 100;
+	double progress = (i / ((x * y)-num)) * 100;
 
 	cout << "\rProgress: " << trunc(progress + 0.5) << "%" << flush;
 	// rewrites over the line updating with the current percentage complete
